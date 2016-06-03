@@ -151,21 +151,21 @@ void Sukhova::lab3()
 void Sukhova::lab4()
 {
 	double* a=new double[N];
-	double* b=new double[N];
+	double* be=new double[N];
 	a[0]=-A[0][1]/A[0][0];
-	b[0]=b[0]/A[0][0];
+	be[0]=b[0]/A[0][0];
 	for (int i=1; i<N; i++)
 	{
 		a[i]=-A[i][i+1]/(A[i][i]+A[i][i-1]*a[i-1]);
-		b[i]=(b[i]-A[i][i-1]*b[i-1])/(A[i][i]+A[i][i-1]*a[i-1]);
+		be[i]=(b[i]-A[i][i-1]*be[i-1])/(A[i][i]+A[i][i-1]*a[i-1]);
 	}
-	x[N-1]=b[N-1];
+	x[N-1]=be[N-1];
 	for (int i=N-2; i>=0; i--)
 	{
-		x[i]=a[i]*x[i+1]+b[i];
+		x[i]=a[i]*x[i+1]+be[i];
 	}
 	delete[] a;
-	delete[] b;
+	delete[] be;
 	return;
 }
 
